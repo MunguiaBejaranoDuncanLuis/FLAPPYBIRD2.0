@@ -1,0 +1,49 @@
+@startuml
+
+class Game{
+    -Repeat()
+}
+class Screen{
+    +See()
+}
+class Player{
+    +Play()
+}
+class Bird{
+    +Fly()
+    +Avoid()
+    +Fall()
+}
+class Pipe{
+    +Danger()
+}
+class Wall{
+    -Unlimited()
+}
+class collision{
+    +Danger()
+}
+class Live{
+    +Oportunity()
+}
+class Road{
+    +Danger()
+}
+
+Game o-- Screen
+Player *-- Game
+Player o-- Screen
+
+Bird o-- Screen
+Bird o-- Road
+Bird *--"3" Live
+collision --*"1" Live
+
+Player o-- Bird
+
+Road *-- Wall
+Road *-- Pipe
+
+Pipe --|> collision
+
+@enduml
